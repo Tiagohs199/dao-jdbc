@@ -2,16 +2,16 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class Deparment  implements Serializable{
+public class Department  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	
-	public Deparment() {
+	public Department() {
 	}
 
-	public Deparment(Integer id, String name) {
+	public Department(Integer id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -48,7 +48,7 @@ public class Deparment  implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Deparment other = (Deparment) obj;
+		Department other = (Department) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
