@@ -1,5 +1,6 @@
 package application;
 
+import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
@@ -14,21 +15,41 @@ public class Program2 {
 		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 		
 
-		System.out.println("\n=======Teste 4: Insert new id Department ======\n");
-		Department dep = new Department(5,"Jogos");
+		System.out.println("=====Test 1: Department findBy ID ======\n");
+		Department dep = departmentDao.findById(3);
+		System.out.println(dep);
 
-		departmentDao.insert(dep);
-		System.out.println("Inserted new id = "+ dep.getId());
+		
+
+		System.out.println("\n=======Teste 2 Department find all ======\n");
+
+		List<Department> list1 = departmentDao.findAll();
+
+		for (Department obj : list1) {
+			System.out.println(obj);
+		}
+
+		System.out.println("\n=======Teste 3: Insert new id ======\n");
+		Department newDep = new Department(0,"newDep");
+
+		departmentDao.insert(newDep);
+		System.out.println("Inserted new id = "+ newDep.getId());
+		
 		
 		System.out.println("\n=======Teste 5: Department Update  ======\n");
-		dep = sellerDao.findById(1);
-		seller.setName("Martha  Waine");
+		dep = departmentDao.findById(3);
+		dep.setName("teste");
+		departmentDao.update(dep);
+		
+		
+		
+		System.out.println("\n=======Teste 6: Department Delete ======\n");
+		System.out.println("Enter id for delete: ");
+		int id = sc.nextInt();
+		
+		departmentDao.deleteById(id);
+		
+		sc.close();
 
-		sellerDao.update(seller);
-		System.out.println("Update completed!!");
-		
-		
-		
 	}
-
 }
